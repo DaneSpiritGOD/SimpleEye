@@ -1,0 +1,69 @@
+﻿<mw:MetroWindow xmlns:Controls1="clr-namespace:Suites.Wpf.Controls;assembly=Suites.Wpf.App"
+                x:Class="DisplayCenter.UI.Solution.Views.CachedImageWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:mw="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                xmlns:vm="clr-namespace:DisplayCenter.UI.Solution.ViewModels"
+                xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+                mc:Ignorable="d"
+                EnableDWMDropShadow="True"
+                Height="450"
+                Width="800"
+                FontSize="14"
+                Name="window">
+    <mw:MetroWindow.WindowButtonCommands>
+        <mw:WindowButtonCommands Style="{DynamicResource MahApps.Metro.Styles.WindowButtonCommands.Win10}" />
+    </mw:MetroWindow.WindowButtonCommands>
+    <Grid>
+        <TabControl ItemsSource="{Binding Content.ClassifiedImageTable}"
+                    SelectedIndex="0"
+                    Controls:TabControlHelper.Underlined="SelectedTabItem"
+                    TabStripPlacement="Top">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Header}"
+                               FontSize="18" />
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ScrollViewer Margin="15"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl ItemsSource="{Binding Content}"
+                                      Margin="10">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:DetailedImageModel}">
+                                    <materialDesign:Card UniformCornerRadius="5"
+                                                         Margin="5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Controls1:ImageView Source="{Binding Image}"
+                                                                 ShowStatusBar="Collapsed" />
+                                            <!--<Image Source="{Binding Image}" Stretch="Fill"/>-->
+                                            <TextBlock Text="{Binding Time}"
+                                                       HorizontalAlignment="Center"
+                                                       Grid.Row="1" />
+                                        </Grid>
+                                    </materialDesign:Card>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel ItemHeight="{Binding ElementName=window, Path= DataContext.Content.CardHeight}"
+                                               ItemWidth="{Binding ElementName=window, Path=DataContext.Content.CardWidth}" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+    </Grid>
+</mw:MetroWindow>

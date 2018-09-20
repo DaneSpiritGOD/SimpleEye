@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>  
+  <ItemGroup>
+    <Folder Include="Security\" />
+  </ItemGroup>  
+  <ItemGroup>
+    <PackageReference Include="Suites.Core" Version="1.0.0" />
+  </ItemGroup>
+</Project>

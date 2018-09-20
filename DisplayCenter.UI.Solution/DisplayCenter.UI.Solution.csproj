@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F86D0D24-A82A-46EB-8913-C445E3E31508}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>DisplayCenter.UI.Solution</RootNamespace>
+    <AssemblyName>DisplayCenter.UI.Solution</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IImageFactory.cs" />
+    <Compile Include="ImageDtoExtensions.cs" />
+    <Compile Include="ImageDtoNotificationHandler.cs" />
+    <Compile Include="Internal\DefaultImageVMFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ViewModels\DetailedImageModel.cs" />
+    <Compile Include="ViewModels\SolutionClassifyViewModel.cs" />
+    <Compile Include="ViewModels\SolutionSummaryViewModel.cs" />
+    <Compile Include="ViewModels\SolutionViewModel.cs" />
+    <Compile Include="ViewModels\SolutionViewModelFactory.cs" />
+    <Compile Include="ViewModels\SolutionViewModelManager.cs" />
+    <Compile Include="ViewModels\TabItemViewModel.cs" />
+    <Compile Include="Views\CachedImageWindow.xaml.cs">
+      <DependentUpon>CachedImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interactivity\PopupCachedWindowNotification.cs" />
+    <Compile Include="Views\SolutionImageCard.xaml.cs">
+      <DependentUpon>SolutionImageCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SolutionSummaryView.xaml.cs">
+      <DependentUpon>SolutionSummaryView.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\CachedImageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SolutionImageCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SolutionSummaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonLibrary\Suites\src\Suites.Wpf.App\Suites.Wpf.App.csproj">
+      <Project>{27791379-9c80-49d3-8591-0cf18b9ef2df}</Project>
+      <Name>Suites.Wpf.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DisplayCenter.Core\DisplayCenter.Core.csproj">
+      <Project>{B5635C73-0BF8-48C4-8C87-03C1D24C7FE7}</Project>
+      <Name>DisplayCenter.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DisplayCenter.ImageService\DisplayCenter.ImageService.csproj">
+      <Project>{042762D0-F966-4F1A-82F7-597675EA4D05}</Project>
+      <Name>DisplayCenter.ImageService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DisplayCenter.UI.Core\DisplayCenter.UI.Core.csproj">
+      <Project>{E06F5A19-8A5A-47B0-B86E-72A1A129D6C0}</Project>
+      <Name>DisplayCenter.UI.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Suites.MediatR">
+      <Version>1.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

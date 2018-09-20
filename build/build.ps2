@@ -1,0 +1,26 @@
+$nuget_source="E:\NoWorkUpload\Projects\CommonLibrary\nugets"
+$src_dir="E:\NoWorkUpload\Projects\Scanner\"
+$nupkg_output_dir=$src_dir + "nupkgs"
+
+function pack_netcore($project_name)
+{
+    $csproj_path=$src_dir + $project_name + "\" + $project_name + ".csproj"
+    dotnet pack -c Release -o $nupkg_output_dir $csproj_path
+    
+    #nuget init $nupkg_output_dir $nuget_source
+    #remove-item $nupkg_output_dir\*.nupkg
+}
+
+pack_netcore("Archiving.Core")
+pack_netcore("Archiving.Operation.Compose")
+pack_netcore("Archiving.ConfigureServiceExtensions")
+pack_netcore("Archiving.Operation.File")
+pack_netcore("Archiving.Operation.Ftp")
+pack_netcore("Archiving.Operation.Net")
+pack_netcore("Basket")
+
+nuget init $nupkg_output_dir $nuget_source
+remove-item $nupkg_output_dir\*.nupkg
+
+Write-Host 'Press any key to continue...' -NoNewline
+$null = [Console]::ReadKey('?')
