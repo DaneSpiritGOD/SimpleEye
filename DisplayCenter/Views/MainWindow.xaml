@@ -97,101 +97,110 @@
                    FontSize="{Binding CaptionFontSize}"
                    Text="{Binding Caption}" />
       </materialDesign:ColorZone>
-      <materialDesign:PopupBox Grid.Column="2"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Top"
-                               Margin="5"
-                               PlacementMode="BottomAndAlignRightEdges"
-                               StaysOpen="False">
-        <StackPanel MinWidth="150"
-                    Orientation="Vertical">
-          <Button HorizontalContentAlignment="Left">
-            <Button.Content>
-              <StackPanel Orientation="Horizontal">
-                <iconPacks:PackIconMaterial Kind="Settings"
+      <StackPanel Grid.Column="2"
+                  Orientation="Horizontal"
+                  Margin="5"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Center">
+        <TextBlock Name="timeText"
+                   FontSize="25"
+                   VerticalAlignment="Center"
+                   Margin="0 0 20 0" />
+        <materialDesign:PopupBox HorizontalAlignment="Right"
+                                 VerticalAlignment="Top"
+                                 Margin="5"
+                                 PlacementMode="BottomAndAlignRightEdges"
+                                 StaysOpen="False">
+          <StackPanel MinWidth="150"
+                      Orientation="Vertical">
+            <Button HorizontalContentAlignment="Left">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconMaterial Kind="Settings"
+                                              Margin="3"
+                                              VerticalAlignment="Center" />
+                  <TextBlock Text="选项"
+                             Margin="3" />
+                </StackPanel>
+              </Button.Content>
+            </Button>
+            <Separator />
+            <Button HorizontalContentAlignment="Left">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconMaterial Kind="History"
+                                              Margin="3"
+                                              VerticalAlignment="Center" />
+                  <TextBlock Text="历史记录"
+                             Margin="3" />
+                </StackPanel>
+              </Button.Content>
+            </Button>
+            <Button HorizontalContentAlignment="Left"
+                    Command="{Binding CommonCommandCollection.ClearSummaryCommand}">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconModern Kind="Clear"
                                             Margin="3"
                                             VerticalAlignment="Center" />
-                <TextBlock Text="选项"
-                           Margin="3" />
-              </StackPanel>
-            </Button.Content>
-          </Button>
-          <Separator />
-          <Button HorizontalContentAlignment="Left">
-            <Button.Content>
-              <StackPanel Orientation="Horizontal">
-                <iconPacks:PackIconMaterial Kind="History"
-                                            Margin="3"
-                                            VerticalAlignment="Center" />
-                <TextBlock Text="历史记录"
-                           Margin="3" />
-              </StackPanel>
-            </Button.Content>
-          </Button>
-          <Button HorizontalContentAlignment="Left"
-                  Command="{Binding CommonCommandCollection.ClearSummaryCommand}">
-            <Button.Content>
-              <StackPanel Orientation="Horizontal">
-                <iconPacks:PackIconModern Kind="Clear"
-                                          Margin="3"
-                                          VerticalAlignment="Center" />
-                <TextBlock Text="清除统计"
-                           Margin="3" />
-              </StackPanel>
-            </Button.Content>
-          </Button>
-          <Button HorizontalContentAlignment="Left"
-                  Command="{Binding CommonCommandCollection.ClearCachedImageCommand}">
-            <Button.Content>
-              <StackPanel Orientation="Horizontal">
-                <iconPacks:PackIconMaterial Kind="ImageFilter"
-                                            Margin="3"
-                                            VerticalAlignment="Center" />
-                <TextBlock Text="清除图像"
-                           Margin="3" />
-              </StackPanel>
-            </Button.Content>
-          </Button>
-          <Separator />
-          <Button HorizontalContentAlignment="Left"
-                  Command="{Binding CommonCommandCollection.ShutdownAllHostCommand}">
-            <Button.Content>
-              <StackPanel Orientation="Horizontal">
-                <iconPacks:PackIconMaterial Kind="Power"
-                                            Margin="3"
-                                            VerticalAlignment="Center" />
-                <TextBlock Text="关机所有主机"
-                           Margin="3" />
-              </StackPanel>
-            </Button.Content>
-          </Button>
-          <Button HorizontalContentAlignment="Left"
-                  Command="{Binding CommonCommandCollection.RestartAllHostCommand}">
-            <Button.Content>
-              <StackPanel Orientation="Horizontal">
-                <iconPacks:PackIconMaterial Kind="Restart"
-                                            Margin="3"
-                                            VerticalAlignment="Center" />
-                <TextBlock Text="重启所有主机"
-                           Margin="3" />
-              </StackPanel>
-            </Button.Content>
-          </Button>
-          <Separator />
-          <Button HorizontalContentAlignment="Left"
-                  Command="{Binding QuitCommand}">
-            <Button.Content>
-              <StackPanel Orientation="Horizontal">
-                <iconPacks:PackIconOcticons Kind="SignOut"
-                                            Margin="3"
-                                            VerticalAlignment="Center" />
-                <TextBlock Text="仅退出程序"
-                           Margin="3" />
-              </StackPanel>
-            </Button.Content>
-          </Button>
-        </StackPanel>
-      </materialDesign:PopupBox>
+                  <TextBlock Text="清除统计"
+                             Margin="3" />
+                </StackPanel>
+              </Button.Content>
+            </Button>
+            <Button HorizontalContentAlignment="Left"
+                    Command="{Binding CommonCommandCollection.ClearCachedImageCommand}">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconMaterial Kind="ImageFilter"
+                                              Margin="3"
+                                              VerticalAlignment="Center" />
+                  <TextBlock Text="清除图像"
+                             Margin="3" />
+                </StackPanel>
+              </Button.Content>
+            </Button>
+            <Separator />
+            <Button HorizontalContentAlignment="Left"
+                    Command="{Binding CommonCommandCollection.ShutdownAllHostCommand}">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconMaterial Kind="Power"
+                                              Margin="3"
+                                              VerticalAlignment="Center" />
+                  <TextBlock Text="关机所有主机"
+                             Margin="3" />
+                </StackPanel>
+              </Button.Content>
+            </Button>
+            <Button HorizontalContentAlignment="Left"
+                    Command="{Binding CommonCommandCollection.RestartAllHostCommand}">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconMaterial Kind="Restart"
+                                              Margin="3"
+                                              VerticalAlignment="Center" />
+                  <TextBlock Text="重启所有主机"
+                             Margin="3" />
+                </StackPanel>
+              </Button.Content>
+            </Button>
+            <Separator />
+            <Button HorizontalContentAlignment="Left"
+                    Command="{Binding QuitCommand}">
+              <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconOcticons Kind="SignOut"
+                                              Margin="3"
+                                              VerticalAlignment="Center" />
+                  <TextBlock Text="仅退出程序"
+                             Margin="3" />
+                </StackPanel>
+              </Button.Content>
+            </Button>
+          </StackPanel>
+        </materialDesign:PopupBox>
+      </StackPanel>
     </Grid>
     <StatusBar DockPanel.Dock="Bottom"
                Style="{DynamicResource MetroStyleSystemStatusBar}"

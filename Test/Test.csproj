@@ -15,8 +15,4 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\CommonLibrary\Suites\Suites.Core\Suites.Core.csproj" />
-  </ItemGroup>
-
 </Project>
