@@ -24,19 +24,9 @@ namespace DisplayCenter.Views
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private readonly DispatcherTimer _timer = new DispatcherTimer(DispatcherPriority.ApplicationIdle);
         public MainWindow()
         {
             InitializeComponent();
-
-            _timer.Tick += Timer_Click;
-            _timer.Interval = new TimeSpan(0, 0, 1);
-            _timer.Start();
-        }
-
-        private void Timer_Click(object sender, EventArgs e)
-        {
-            timeText.Text = DateTime.Now.ToString(string.Format("yy{0}MM{1}dd{2}HH{3}mm{4}ss", "/", "/", " ", ":", ":"));
         }
     }
 }

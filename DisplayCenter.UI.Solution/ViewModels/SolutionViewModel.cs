@@ -77,9 +77,9 @@ namespace DisplayCenter.UI.Solution.ViewModels
             {
                 UpdatedImageModel = im;
             }
-            if (!string.IsNullOrWhiteSpace(options.AddToSummaryGroup))
+            if (options.AddToSummaryPie)
             {
-                SolutionSummaryViewModel.Add(dto, options.AddToSummaryGroup);
+                SolutionSummaryViewModel.Add(dto, options.Display);
             }
         }
 

@@ -89,17 +89,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets">
       <Version>2.1.1</Version>
     </PackageReference>
-    <PackageReference Include="NLog.Config">
-      <Version>4.5.8</Version>
-    </PackageReference>
-    <PackageReference Include="NLog.Schema">
-      <Version>4.5.8</Version>
-    </PackageReference>
     <PackageReference Include="Prism.Wpf">
-      <Version>7.1.0.172-pre</Version>
+      <Version>7.1.0.431</Version>
     </PackageReference>
     <PackageReference Include="Suites.Core">
-      <Version>1.0.0</Version>
+      <Version>1.0.7</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

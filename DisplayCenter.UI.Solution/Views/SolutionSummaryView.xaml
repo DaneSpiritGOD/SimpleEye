@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DisplayCenter.UI.Solution.Views"
-             xmlns:bwlc="clr-namespace:Suites.Wpf.LiveCharts.Pie;assembly=Suites.Wpf.App"
+             xmlns:swa="http://suites.com/"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
              mc:Ignorable="d" 
@@ -28,8 +28,8 @@
                 <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
             </lvc:PieChart.DataTooltip>
             <lvc:PieChart.Series>
-                <lvc:PieSeries Title="合格" Values="{Binding OkValues}" DataLabels="True" LabelPoint="{x:Static bwlc:Resources.LabelPoint}" Fill="{StaticResource GreenAccentBrush}"/>
-                <lvc:PieSeries Title="不合格" Values="{Binding NgValues}" DataLabels="True" LabelPoint="{x:Static bwlc:Resources.LabelPoint}" Fill="{StaticResource RedAccentBrush}"/>
+                <lvc:PieSeries Title="合格" Values="{Binding OkValues}" DataLabels="True" LabelPoint="{x:Static swa:Resources.LabelPoint}" Fill="{StaticResource GreenAccentBrush}"/>
+                <lvc:PieSeries Title="不合格" Values="{Binding NgValues}" DataLabels="True" LabelPoint="{x:Static swa:Resources.LabelPoint}" Fill="{StaticResource RedAccentBrush}"/>
             </lvc:PieChart.Series>
         </lvc:PieChart>
     </Grid>

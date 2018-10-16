@@ -14,7 +14,6 @@ namespace DisplayCenter.Core.Internal
         private readonly IEnumerable<SolutionOptions> _solutionOptionss;
         private readonly ConcurrentDictionary<SolutionOptions, Solution> _solutionTable;
         private readonly SolutionOptions _defaultSolutionOptions;
-        private readonly IEnumerable<ClassifyGroup> _classifyGroups;
 
         public SolutionLocator(IOptions<SolutionClusterOptions> solutionClusterOptions)
         {
@@ -23,7 +22,6 @@ namespace DisplayCenter.Core.Internal
             _solutionTable = new ConcurrentDictionary<SolutionOptions, Solution>(SolutionOptions.Comparer);
             _defaultSolutionOptions = clusterOptions.DefaultSolution;
             _solutionOptionss = clusterOptions.Solutions;
-            _classifyGroups = clusterOptions.ClassifyGroups;
         }
 
         public Solution Locate(ImageDto item)
@@ -71,16 +69,10 @@ namespace DisplayCenter.Core.Internal
 
             if (!_solutionTable.ContainsKey(options))
             {
-                _solutionTable[options] = new Solution(options, extract(options));
+                _solutionTable[options] = new Solution(options);
             }
 
             return _solutionTable[options];
-
-            IEnumerable<ClassifyGroup> extract(SolutionOptions innerOptions)
-            {
-                var result = _classifyGroups.Join(innerOptions.ClassifyGroups, x => x.Id, y => y, (x, y) => x).ToList();
-                return (result.Count == 0) ? null : result;
-            }
         }
     }
 }

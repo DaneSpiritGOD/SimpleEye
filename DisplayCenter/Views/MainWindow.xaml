@@ -10,6 +10,8 @@
                 xmlns:view="clr-namespace:DisplayCenter.Views"
                 xmlns:slnView="clr-namespace:DisplayCenter.UI.Solution.Views;assembly=DisplayCenter.UI.Solution"
                 xmlns:suitesWpf="clr-namespace:Suites.Wpf.App;assembly=Suites.Wpf.App"
+                xmlns:swa="http://suites.com/"
+                xmlns:log="clr-namespace:Microsoft.Extensions.Logging.Control;assembly=Suites.Wpf.Core"
                 xmlns:suitesWpfInter="clr-namespace:Suites.Wpf.App.Interactivity;assembly=Suites.Wpf.App"
                 xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
                 xmlns:prism="http://prismlibrary.com/"
@@ -102,10 +104,9 @@
                   Margin="5"
                   HorizontalAlignment="Right"
                   VerticalAlignment="Center">
-        <TextBlock Name="timeText"
+        <swa:Clock Margin="0 0 20 0"
                    FontSize="25"
-                   VerticalAlignment="Center"
-                   Margin="0 0 20 0" />
+                   VerticalAlignment="Center" />
         <materialDesign:PopupBox HorizontalAlignment="Right"
                                  VerticalAlignment="Top"
                                  Margin="5"
@@ -245,8 +246,10 @@
                        AcceptsReturn="True"
                        VerticalScrollBarVisibility="Auto"
                        SpellCheck.IsEnabled="True"
-                       Height="300" />
-              <!--log4net:Log4NetAppenderAttacher.AutoWire="True"-->
+                       Height="300"
+                       log:LoggerControlAttacher.Wire="True"
+                       log:LoggerControlAttacher.RefreshInterval="2000"
+                       log:LoggerControlAttacher.AutoClearWhenMeetCount="1000" />
             </Expander>
           </materialDesign:Card>
         </StackPanel>

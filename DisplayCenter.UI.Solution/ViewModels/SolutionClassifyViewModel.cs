@@ -40,11 +40,10 @@ namespace DisplayCenter.UI.Solution.ViewModels
         public ClassifyGroup Add(ImageDto dto, out DetailedImageModel im)
         {
             var options = getClassifyOptions(dto);
-            var key = options.Display;
 
             var imageModel = _imageFactory.ExtractFrom(dto, options);
 
-            addCachedCard(key, imageModel, options.MaxCacheCount);
+            addCachedCard(options.Display, imageModel, options.MaxCacheCount);
 
             if (options.DisableDisplayInFront)
             {
@@ -87,6 +86,7 @@ namespace DisplayCenter.UI.Solution.ViewModels
 
                 case FileImageDto fdto:
                 case MemoryImageDto mdto:
+#warning 在此处添加正则表达式的分析
                     return _sln.Classes.SingleOrDefault(x => dto.Key.ToLower().Contains(x.AlterKey.ToLower())) ?? _classifyGroupLocator.DefaultGroup;
                 default:
                     throw new NotSupportedException("未知数据类型!");

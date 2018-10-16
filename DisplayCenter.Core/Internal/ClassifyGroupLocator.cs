@@ -1,6 +1,7 @@
 ﻿using DisplayCenter.Core.Options;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,21 @@ namespace DisplayCenter.Core.Internal
         public ClassifyGroup DefaultGroup { get; }
 
         public ClassifyGroupLocator(
-            IOptions<SolutionClusterOptions> solutionClusterOptions)
+            IEnumerable<ClassifyGroup> classifyGroups,
+            ClassifyGroup defaultClassifyGroup)
         {
-            var options = NamedNullException.Assert(solutionClusterOptions?.Value, nameof(solutionClusterOptions));
-            var groups = options.ClassifyGroups;
-            DefaultGroup = NamedNullException.Assert(options.DefaultClassifyGroup, nameof(options.DefaultClassifyGroup));
+            DefaultGroup = NamedNullException.Assert(defaultClassifyGroup, nameof(defaultClassifyGroup));
 
-            var dict = groups.ToDictionary(x => x.Id);
+            Dictionary<int, ClassifyGroup> dict = default;
+            if (classifyGroups == null)
+            {
+                dict = new Dictionary<int, ClassifyGroup>();
+            }
+            else
+            {
+                dict = classifyGroups.ToDictionary(x => x.Id);
+            }
+
             if (dict.ContainsKey(DefaultGroup.Id))
             {
                 throw new RuntimeException($"分类组中不能包含默认分类组的id.");

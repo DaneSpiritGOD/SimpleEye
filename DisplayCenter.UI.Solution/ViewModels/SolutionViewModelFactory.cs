@@ -1,4 +1,5 @@
 ﻿using DisplayCenter.Core;
+using DisplayCenter.Core.Internal;
 using DisplayCenter.Core.Options;
 using DisplayCenter.UI.Core;
 using DisplayCenter.UI.Solution.Interactivity;
@@ -23,22 +24,24 @@ namespace DisplayCenter.UI.Solution.ViewModels
     {
         private readonly InteractionRequest<PopupCachedWindowNotification> _request;
         private readonly SolutionCardViewOptions _solutionCardViewOptions;
-        private readonly ClassifyViewOptions _classifyViewOptions;
+        private readonly CachedImageViewOptions _classifyViewOptions;
         private readonly IImageFactory _imageFactory;
-        private readonly IClassifyGroupLocator _classifyGroupLocator;
+        private readonly ClassifyGroup _defaultClassifyGroup;
+
+        //private readonly IClassifyGroupLocator _classifyGroupLocator;
 
         public SolutionViewModelFactory(
             IOptions<SolutionCardViewOptions> solutionCardViewOptions,
-            IOptions<ClassifyViewOptions> classifyViewOptions,
+            IOptions<CachedImageViewOptions> classifyViewOptions,
+            IOptionsSnapshot<ClassifyGroup> defaultClassifyGroupOptions,
             IImageFactory imageFactory,
-            InteractionRequest<PopupCachedWindowNotification> request,
-            IClassifyGroupLocator classifyGroupLocator)
+            InteractionRequest<PopupCachedWindowNotification> request)
         {
             _request = NamedNullException.Assert(request, nameof(request));
             _solutionCardViewOptions = NamedNullException.Assert(solutionCardViewOptions, nameof(solutionCardViewOptions)).Value;
             _classifyViewOptions = NamedNullException.Assert(classifyViewOptions?.Value, nameof(classifyViewOptions));
             _imageFactory = NamedNullException.Assert(imageFactory, nameof(imageFactory));
-            _classifyGroupLocator = NamedNullException.Assert(classifyGroupLocator, nameof(classifyGroupLocator));
+            _defaultClassifyGroup = NamedNullException.Assert(defaultClassifyGroupOptions.Get("default"), nameof(defaultClassifyGroupOptions));
         }
 
         public SolutionViewModel Create(dc.Solution sln)
@@ -49,7 +52,7 @@ namespace DisplayCenter.UI.Solution.ViewModels
                     sln,
                     _classifyViewOptions.CardWidth, _classifyViewOptions.CardHeight,
                     _imageFactory,
-                    _classifyGroupLocator),
+                    new ClassifyGroupLocator(sln.Classes, _defaultClassifyGroup)),
                 new SolutionSummaryViewModel(),
                 _solutionCardViewOptions,
                 _request);

@@ -46,7 +46,7 @@ namespace DisplayCenter
 
             try
             {
-                logger.Debug("init main");
+                logger.Debug("程序启动");
 
                 var app = CreateApp(args);
                 app.InitializeComponent();
@@ -83,16 +83,16 @@ namespace DisplayCenter
                 services.AddObserverOperationFactoryExtension<InprocOperationFactoryExtension>();
 
                 services.Configure<SolutionClusterOptions>(hostContext.Configuration.GetSection("SolutionCluster"));
+                services.Configure<ClassifyGroup>("default", hostContext.Configuration.GetSection("SolutionCluster:DefaultClassifyGroup"));
                 services.AddSingleton<ISolutionLocator, SolutionLocator>();
 
                 services.Configure<SolutionCardViewOptions>(hostContext.Configuration.GetSection("SolutionCluster:SolutionCardView"));
-                services.Configure<ClassifyViewOptions>(hostContext.Configuration.GetSection("SolutionCluster:ClassifyView"));
+                services.Configure<CachedImageViewOptions>(hostContext.Configuration.GetSection("SolutionCluster:CachedImageView"));
 
                 services.AddSingleton<IHostControl, DefaultHostControl>();
 
                 services.AddSingleton<ICommonCommandCollection, CommonCommandCollection>();
 
-                services.AddSingleton<IClassifyGroupLocator, ClassifyGroupLocator>();
                 services.AddSingleton<IImageFactory, DefaultImageVMFactory>();
 
                 services.Configure<WindowOptions>(hostContext.Configuration.GetSection("Window"));

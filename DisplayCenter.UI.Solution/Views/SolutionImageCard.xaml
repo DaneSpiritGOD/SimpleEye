@@ -4,21 +4,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              x:Class="DisplayCenter.UI.Solution.Views.SolutionImageCard"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:wpf="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
              xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
-             xmlns:md="clr-namespace:Suites.Wpf.App.Converters;assembly=Suites.Wpf.App"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:Controls="clr-namespace:Suites.Wpf.Controls;assembly=Suites.Wpf.App"
-             xmlns:suitesWpfConv="clr-namespace:Suites.Wpf.App.Converters;assembly=Suites.Wpf.App"
+             xmlns:swa="http://suites.com/"
              xmlns:local="clr-namespace:DisplayCenter.UI.Solution.Views"
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">
   <Grid>
     <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="200"/>
-        </Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="200" />
+    </Grid.ColumnDefinitions>
     <materialDesign:Card UniformCornerRadius="10"
                          materialDesign:ShadowAssist.Darken="True"
                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
@@ -29,7 +29,7 @@
           <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Controls:ImageView Source="{Binding UpdatedImageModel.Image}"
-                            ShowStatusBar="{Binding ImageViewShowStatusBar,Converter={suitesWpfConv:Bool2VisibilityConverter}}" />
+                            ShowStatusBar="{Binding ImageViewShowStatusBar,Converter={swa:Bool2VisibilityConverter}}" />
         <Grid HorizontalAlignment="Stretch"
               Grid.Row="1">
           <Grid.RowDefinitions>
@@ -86,9 +86,9 @@
             <Ellipse Height="20"
                      Width="20"
                      Stroke="Black"
-                     Fill="{Binding UpdatedImageModel.Decorator,Converter={md:String2ColorBrushConverter}}"
+                     Fill="{Binding UpdatedImageModel.Decorator,Converter={swa:String2ColorBrushConverter}}"
                      ToolTip="{Binding UpdatedImageModel.DecoratorDescription}"
-                     Visibility="{Binding ShowImageInfoColor,Converter={suitesWpfConv:Bool2VisibilityConverter}}" />
+                     Visibility="{Binding ShowImageInfoColor,Converter={swa:Bool2VisibilityConverter}}" />
             <TextBlock Text="{Binding UpdatedImageModel.Description}"
                        Margin="3"
                        ToolTip="{Binding UpdatedImageModel.Description}" />
@@ -99,8 +99,7 @@
                       Grid.RowSpan="3"
                       Grid.Column="1"
                       Margin="0 0 5 0">
-            <Button
-                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+            <Button Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                     HorizontalAlignment="Left"
                     ToolTip="更多图像"
                     Command="{Binding ShowRelatedCachedImageCommand}">
@@ -110,14 +109,13 @@
         </Grid>
       </Grid>
     </materialDesign:Card>
-    <materialDesign:Card
-            MinHeight="200"
-            Grid.Column="1"
-            Margin="5 0"
-            UniformCornerRadius="10"
-            materialDesign:ShadowAssist.Darken="True"
-            materialDesign:ShadowAssist.ShadowDepth="Depth3">
-            <local:SolutionSummaryView DataContext="{Binding SolutionSummaryViewModel}"/>
-        </materialDesign:Card>
+    <materialDesign:Card MinHeight="200"
+                         Grid.Column="1"
+                         Margin="5 0"
+                         UniformCornerRadius="10"
+                         materialDesign:ShadowAssist.Darken="True"
+                         materialDesign:ShadowAssist.ShadowDepth="Depth3">
+      <local:SolutionSummaryView DataContext="{Binding SolutionSummaryViewModel}" />
+    </materialDesign:Card>
   </Grid>
 </UserControl>

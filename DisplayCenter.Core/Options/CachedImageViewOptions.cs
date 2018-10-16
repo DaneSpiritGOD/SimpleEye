@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DisplayCenter.Core.Options
 {
-    public class ClassifyViewOptions
+    public class CachedImageViewOptions
     {
         public int CardHeight { get; set; }
         public int CardWidth { get; set; }

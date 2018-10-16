@@ -10,7 +10,7 @@ namespace DisplayCenter.Core.Options
         public string Key { get; set; }
         public string Display { get; set; }
         public int Order { get; set; }
-        public int[] ClassifyGroups { get; set; }
+        public ClassifyGroup[] ClassifyGroups { get; set; }
 
         public static readonly IEqualityComparer<SolutionOptions> Comparer = new SolutionOptionsComparer();
 

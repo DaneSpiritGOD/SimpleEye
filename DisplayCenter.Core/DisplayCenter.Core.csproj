@@ -8,6 +8,6 @@
     <Folder Include="Security\" />
   </ItemGroup>  
   <ItemGroup>
-    <PackageReference Include="Suites.Core" Version="1.0.0" />
+    <PackageReference Include="Suites.Core" Version="1.0.7" />
   </ItemGroup>
 </Project>

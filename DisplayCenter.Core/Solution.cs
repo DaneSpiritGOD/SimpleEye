@@ -16,7 +16,7 @@ namespace DisplayCenter.Core
 
         public static readonly IEqualityComparer<Solution> Comparer = new SolutionComparer();
 
-        internal Solution(SolutionOptions options, IEnumerable<ClassifyGroup> classes) : this(options.Id, options.Order, options.Display, classes) { }
+        internal Solution(SolutionOptions options) : this(options.Id, options.Order, options.Display, options.ClassifyGroups) { }
 
         public Solution(int id, int order, string display, IEnumerable<ClassifyGroup> classes)
         {
