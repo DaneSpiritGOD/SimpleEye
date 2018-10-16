@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             x:Class="DisplayCenter.UI.Solution.Views.SolutionImageCard"
+             x:Class="DisplayCenter.UI.Solution.Views.SolutionView"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:wpf="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
              xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
@@ -16,8 +16,8 @@
              d:DesignWidth="300">
   <Grid>
     <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="{Binding ImageWidth}" />
       <ColumnDefinition Width="*" />
-      <ColumnDefinition Width="200" />
     </Grid.ColumnDefinitions>
     <materialDesign:Card UniformCornerRadius="10"
                          materialDesign:ShadowAssist.Darken="True"
@@ -109,13 +109,13 @@
         </Grid>
       </Grid>
     </materialDesign:Card>
-    <materialDesign:Card MinHeight="200"
+    <materialDesign:Card MinHeight="300"
                          Grid.Column="1"
                          Margin="5 0"
                          UniformCornerRadius="10"
                          materialDesign:ShadowAssist.Darken="True"
                          materialDesign:ShadowAssist.ShadowDepth="Depth3">
-      <local:SolutionSummaryView DataContext="{Binding SolutionSummaryViewModel}" />
+      <swa:SimplePie Source="{Binding PieHelper.SimpleSeries}" />
     </materialDesign:Card>
   </Grid>
 </UserControl>

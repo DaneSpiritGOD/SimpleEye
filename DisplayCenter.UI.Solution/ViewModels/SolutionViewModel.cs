@@ -41,19 +41,20 @@ namespace DisplayCenter.UI.Solution.ViewModels
         }
 
         public string FlowVelocityUnit { get; }
-
+        public int ImageWidth { get; }
         public ICommand ShowRelatedCachedImageCommand { get; }
         public SolutionClassifyViewModel ClassifiedImageVM { get; }
 
+        public PieHelper PieHelper { get; }
+
         public bool ImageViewShowStatusBar { get; }
         public bool ShowImageInfoColor { get; }
-        public SolutionSummaryViewModel SolutionSummaryViewModel { get; }
 
         private readonly InteractionRequest<PopupCachedWindowNotification> _request;
         public SolutionViewModel(
             dc.Solution solution,
             SolutionClassifyViewModel solutionClassifyViewModel,
-            SolutionSummaryViewModel solutionSummaryViewModel,
+            PieHelper pieHelper,
             SolutionCardViewOptions solutionCardViewOptions,
             InteractionRequest<PopupCachedWindowNotification> request)
         {
@@ -63,11 +64,12 @@ namespace DisplayCenter.UI.Solution.ViewModels
             ShowRelatedCachedImageCommand = new DelegateCommand(
                 () => _request.Raise(new PopupCachedWindowNotification { Title = Solution.Display, Content = ClassifiedImageVM }));
             ClassifiedImageVM = NamedNullException.Assert(solutionClassifyViewModel, nameof(solutionClassifyViewModel));
-            SolutionSummaryViewModel = NamedNullException.Assert(solutionSummaryViewModel, nameof(solutionSummaryViewModel));
+            PieHelper = NamedNullException.Assert(pieHelper, nameof(pieHelper));
 
             ImageViewShowStatusBar = solutionCardViewOptions.ShowImageViewStatusBar;
             ShowImageInfoColor = solutionCardViewOptions.ShowImageInfoColor;
             FlowVelocityUnit = solutionCardViewOptions.FlowVelocityUnit;
+            ImageWidth = solutionCardViewOptions.ImageWidth;
         }
 
         public void Add(ImageDto dto)
@@ -79,7 +81,7 @@ namespace DisplayCenter.UI.Solution.ViewModels
             }
             if (options.AddToSummaryPie)
             {
-                SolutionSummaryViewModel.Add(dto, options.Display);
+                PieHelper.Trigger(options.Display);
             }
         }
 
@@ -91,7 +93,7 @@ namespace DisplayCenter.UI.Solution.ViewModels
 
         public void ClearSummary()
         {
-            SolutionSummaryViewModel.Clear();
+            PieHelper.Clear();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace DisplayCenter.Core.Options
     {
         public int Height { get; set; }
         public int Width { get; set; }
+        public int ImageWidth { get; set; }
         public int FontSize { get; set; }
 
         public bool ShowImageViewStatusBar { get; set; }

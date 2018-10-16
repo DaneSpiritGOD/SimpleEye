@@ -1,0 +1,132 @@
+﻿{
+  "SolutionCluster": {
+    "SolutionCardView": {
+      "Height": 450,
+      "Width": 550,
+      "ImageWidth": 300,
+      "FontSize": 17,
+      "ShowImageViewStatusBar": false,
+      "ShowImageInfoColor": true,
+      "ShowRoiDescription": false,
+      "FlowVelocityUnit": "个/分钟"
+    },
+    "CachedImageView": {
+      "CardHeight": 150,
+      "CardWidth": 150
+    },
+    "Solutions": [
+      {
+        "Id": 100,
+        "Key": "SouthSecurityLine",
+        "Display": "南线安全线",
+        "Order": 100,
+        "ClassifyGroups": [
+          {
+            "Id": 100,
+            "Display": "Ok",
+            "Color": "primary green",
+            "MaxCacheCount": 20,
+            "DisableDisplayInFront": false,
+            "AlterKey": "-ok",
+            "AddToSummaryPie": true
+          },
+          {
+            "Id": 101,
+            "Display": "Ng",
+            "Color": "primary red",
+            "MaxCacheCount": 20,
+            "DisableDisplayInFront": false,
+            "AlterKey": "-error",
+            "AddToSummaryPie": true
+          },
+          {
+            "Id": 102,
+            "Display": "初始化",
+            "Color": "chocolate",
+            "MaxCacheCount": 20,
+            "DisableDisplayInFront": false,
+            "AlterKey": "-init",
+            "AddToSummaryPie": true
+          }
+        ]
+      },
+      {
+        "Id": 101,
+        "Key": "NorthSecurityLine",
+        "Display": "北线安全线",
+        "Order": 101,
+        "ClassifyGroups": [
+          {
+            "Id": 100,
+            "Display": "Ok",
+            "Color": "primary green",
+            "MaxCacheCount": 20,
+            "DisableDisplayInFront": false,
+            "AlterKey": "-ok",
+            "AddToSummaryPie": true
+          },
+          {
+            "Id": 101,
+            "Display": "Ng",
+            "Color": "primary red",
+            "MaxCacheCount": 20,
+            "DisableDisplayInFront": false,
+            "AlterKey": "-error",
+            "AddToSummaryPie": true
+          },
+          {
+            "Id": 102,
+            "Display": "初始化1",
+            "Color": "chocolate",
+            "MaxCacheCount": 20,
+            "DisableDisplayInFront": false,
+            "AlterKey": "-init1",
+            "AddToSummaryPie": true
+          },
+          {
+            "Id": 103,
+            "Display": "初始化2",
+            "Color": "olive",
+            "MaxCacheCount": 20,
+            "DisableDisplayInFront": false,
+            "AlterKey": "-init2",
+            "AddToSummaryPie": true
+          },
+          {
+            "Id": 104,
+            "Display": "初始化3",
+            "Color": "oldlace",
+            "MaxCacheCount": 20,
+            "DisableDisplayInFront": false,
+            "AlterKey": "-init3",
+            "AddToSummaryPie": true
+          },
+          {
+            "Id": 105,
+            "Display": "初始化4",
+            "Color": "lightblue",
+            "MaxCacheCount": 20,
+            "DisableDisplayInFront": false,
+            "AlterKey": "-init4",
+            "AddToSummaryPie": true
+          }
+        ]
+      }
+    ],
+    "DefaultSolution": {
+      "Id": 100000000,
+      "Key": "未命名",
+      "Display": "未命名工位",
+      "Order": 1000000
+    },
+    "DefaultClassifyGroup": {
+      "Id": 9999999,
+      "AlterKey": "_________",
+      "Display": "未识别",
+      "Color": "black",
+      "MaxCacheCount": 20,
+      "DisableDisplayInFront": false,
+      "AddToSummaryPie": false
+    }
+  }
+}

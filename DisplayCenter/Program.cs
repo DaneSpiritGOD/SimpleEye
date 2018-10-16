@@ -72,6 +72,12 @@ namespace DisplayCenter
         {
             return HostBuilderExt.CreateDefaultHostBuilder(args)
             .ForceProcessSingleton()
+            .ConfigureAppConfiguration((hostContext, configApp) =>
+            {
+                configApp.AddJsonFile(".\\appsettings\\ImageService.json", true, true);
+                configApp.AddJsonFile(".\\appsettings\\Scanner.json", true, true);
+                configApp.AddJsonFile(".\\appsettings\\SolutionCluster.json", true, true);
+            })
             .UseScanner("Scanner")
             .ConfigureServices((hostContext, services) =>
             {

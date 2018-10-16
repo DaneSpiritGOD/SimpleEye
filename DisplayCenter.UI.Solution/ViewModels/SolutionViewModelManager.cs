@@ -52,7 +52,7 @@ namespace DisplayCenter.UI.Solution.ViewModels
             {
                 try
                 {
-                    SolutionViewModel svm = resolveSVM(_solutionLocator.Locate(innerDto));
+                    var svm = resolveSVM(_solutionLocator.Locate(innerDto));
                     svm.Add(innerDto);
                 }
                 catch (Exception ex)
@@ -64,7 +64,7 @@ namespace DisplayCenter.UI.Solution.ViewModels
 
         private SolutionViewModel resolveSVM(dc.Solution sln)
         {
-            SolutionViewModel svm = SVMs.SingleOrDefault(x => dc.Solution.Comparer.Equals(x.Solution, sln));
+            var svm = SVMs.SingleOrDefault(x => dc.Solution.Comparer.Equals(x.Solution, sln));
             if (svm == default)
             {
                 svm = _svmFactory.Create(sln);

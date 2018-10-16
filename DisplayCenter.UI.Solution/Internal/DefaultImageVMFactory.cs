@@ -31,6 +31,7 @@ namespace DisplayCenter.UI.Solution.Internal
                 group.Color, group.Display);
         }
 
+#warning 目前对于网络流式数据，还没有很好地完善逻辑
         private string extractDescription(ImageDto dto, ClassifyGroup group)
         {
             switch (dto)
@@ -47,6 +48,7 @@ namespace DisplayCenter.UI.Solution.Internal
                         sb.Append("(");
                         foreach (var roi in mdto.Rois)
                         {
+#warning 针对流式数据，其包含的缺陷ROI信息需要在界面上显示出来
                         }
                         sb.Append(")");
                     }

@@ -1,0 +1,18 @@
+﻿{
+  "ImageService": {
+    "PollTimeout": 20,
+    "Endpoints": [
+      {
+        "Id": 1,
+        "Name": "file",
+        "Address": "ipc://ui"
+      },
+      {
+        "Id": 2,
+        "Name": "private net",
+        "Address": "tcp://*:12306"
+      }
+    ],
+    "BoundedChannelCapacity": 200
+  }
+}

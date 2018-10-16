@@ -230,7 +230,7 @@
           </TextBlock.LayoutTransform></TextBlock>
       </Expander.Header>
       <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="15">
+        <StackPanel Margin="15" MaxWidth="500">
           <materialDesign:Card MinWidth="400"
                                HorizontalAlignment="Right"
                                Margin="5"
@@ -262,7 +262,7 @@
                     FontSize="{Binding SVMCardFontSize}">
         <ItemsControl.ItemTemplate>
           <DataTemplate DataType="{x:Type svm:SolutionViewModel}">
-            <slnView:SolutionImageCard Margin="10" />
+            <slnView:SolutionView Margin="10" />
           </DataTemplate>
         </ItemsControl.ItemTemplate>
         <ItemsControl.ItemsPanel>

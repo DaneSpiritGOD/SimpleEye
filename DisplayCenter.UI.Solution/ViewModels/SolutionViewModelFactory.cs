@@ -28,8 +28,6 @@ namespace DisplayCenter.UI.Solution.ViewModels
         private readonly IImageFactory _imageFactory;
         private readonly ClassifyGroup _defaultClassifyGroup;
 
-        //private readonly IClassifyGroupLocator _classifyGroupLocator;
-
         public SolutionViewModelFactory(
             IOptions<SolutionCardViewOptions> solutionCardViewOptions,
             IOptions<CachedImageViewOptions> classifyViewOptions,
@@ -44,6 +42,7 @@ namespace DisplayCenter.UI.Solution.ViewModels
             _defaultClassifyGroup = NamedNullException.Assert(defaultClassifyGroupOptions.Get("default"), nameof(defaultClassifyGroupOptions));
         }
 
+#warning 下面的Create函数集成了很多个工厂，在修改时要注意
         public SolutionViewModel Create(dc.Solution sln)
         {
             return new SolutionViewModel(
@@ -53,7 +52,7 @@ namespace DisplayCenter.UI.Solution.ViewModels
                     _classifyViewOptions.CardWidth, _classifyViewOptions.CardHeight,
                     _imageFactory,
                     new ClassifyGroupLocator(sln.Classes, _defaultClassifyGroup)),
-                new SolutionSummaryViewModel(),
+                new PieHelper(sln.Classes.Concat(new[] { _defaultClassifyGroup })),
                 _solutionCardViewOptions,
                 _request);
         }

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace DisplayCenter.UI.Solution.Views
 {
     /// <summary>
-    /// SolutionImageCard.xaml 的交互逻辑
+    /// SolutionView.xaml 的交互逻辑
     /// </summary>
-    public partial class SolutionImageCard : UserControl
+    public partial class SolutionView : UserControl
     {
-        public SolutionImageCard()
+        public SolutionView()
         {
             InitializeComponent();
         }

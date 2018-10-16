@@ -1,0 +1,169 @@
+﻿{
+  "Scanner": {
+    "Core": {
+      "FileReadSpinWaitTimeout": 500,
+      "Groups": [
+        {
+          "Name": "北线安全线检测/Init",
+          "Monitor": {
+            "FileNameKey": "NorthSecurityLine-init"
+          },
+          "Operations": [
+            {
+              //"EnableNetTransfer": true,
+              //"NetAddress": "tcp://127.0.0.1:12306"
+              "InProcessTransferKey": "imagedto"
+            }
+          ]
+        },
+        {
+          "Name": "北线安全线检测/Ng",
+          "Monitor": {
+            "FileNameKey": "NorthSecurityLine-error"
+          },
+          "Operations": [
+            {
+              "EnableNetTransfer": true,
+              "NetAddress": "tcp://127.0.0.1:12306"
+              //"InProcessTransferKey": "imagedto"
+            },
+            {
+              "EnableBackup": true
+            }
+          ]
+        },
+        {
+          "Name": "北线安全线检测/Ok",
+          "Monitor": {
+            "FileNameKey": "NorthSecurityLine-ok"
+          },
+          "Operations": [
+            {
+              //"EnableNetTransfer": true
+              "InProcessTransferKey": "imagedto"
+            },
+            {
+              "EnableBackup": true
+            }
+          ]
+        },
+        {
+          "Name": "南线安全线检测/Init",
+          "Monitor": {
+            "FileNameKey": "SouthSecurityLine-init"
+          },
+          "Operations": [
+            {
+              //"EnableNetTransfer": true,
+              //"NetAddress": "tcp://127.0.0.1:12308"
+              "InProcessTransferKey": "imagedto"
+            }
+          ]
+        },
+        {
+          "Name": "南线安全线检测/Ng",
+          "Monitor": {
+            "FileNameKey": "SouthSecurityLine-error"
+          },
+          "Operations": [
+            {
+              //"EnableNetTransfer": true
+              "InProcessTransferKey": "imagedto"
+            },
+            {
+              "EnableBackup": true
+            }
+          ]
+        },
+        {
+          "Name": "南线安全线检测/Ok",
+          "Monitor": {
+            "FileNameKey": "SouthSecurityLine-ok"
+          },
+          "Operations": [
+            {
+              //"EnableNetTransfer": true
+              "InProcessTransferKey": "imagedto"
+            },
+            {
+              "EnableBackup": true
+            }
+          ]
+        },
+        {
+          "Name": "Backup2NewDir",
+          "Monitor": {
+            "FileNameKey": "Backup2NewDir"
+          },
+          "Operations": [
+            {
+              //"EnableNetTransfer": true
+              "InProcessTransferKey": "imagedto"
+            },
+            {
+              "EnableBackup": true,
+              "BackupPath": ".\\Image_Backup_New"
+            }
+          ]
+        },
+        {
+          "Name": "Move2Dir",
+          "Monitor": {
+            "FileNameKey": "Move2Dir"
+          },
+          "Operations": [
+            {
+              //"EnableNetTransfer": true
+              "InProcessTransferKey": "imagedto"
+            },
+            {
+              "EnableMove": true,
+              "MovePath": ".\\Image_Move"
+            }
+          ]
+        },
+        {
+          "Name": "Ftp",
+          "Monitor": {
+            "FileNameKey": "FtpDelete"
+          },
+          "Operations": [
+            {
+              "EnableFtpTransfer": true,
+              "DisableFileNameAddedTimeStamp": true
+            },
+            {
+              //"EnableNetTransfer": true
+              "InProcessTransferKey": "imagedto"
+            },
+            {
+              "EnableBackup": true,
+              "DisableFileNameAddedTimeStamp": false
+            }
+          ]
+        }
+      ],
+      "Default": {
+        "Monitor": {
+          "Path": ".\\Images",
+          "FileNameKey": "_",
+          "FileExtensions": [ "png", "bmp", "jpg" ]
+        },
+        "Operation": {
+          "NetAddress": "ipc://ui",
+          "MovePath": ".\\Move",
+          "BackupPath": ".\\Image_Backup",
+          "Ftp": {
+            "FtpRoot": "ftp://my-lenovo.inner.private.com:21",
+            "UserName": "User",
+            "Password": "user",
+            "Timeout": 500
+          }
+        }
+      },
+      "FileMan": {
+        "ScanPeriod": 200
+      }
+    }
+  }
+}
